@@ -22,6 +22,10 @@ jobs:
       - name: Test with flake8 and run practicum tests
         run: |
           python -m flake8
+          echo FLASK_APP=${{ secrets.FLASK_APP }} >> .env
+          echo DATABASE_URI=${{ secrets.DATABASE_URI }} >> .env
+          echo SQLALCHEMY_TRACK_MODIFICATIONS=${{ secrets.SQLALCHEMY_TRACK_MODIFICATIONS }} >> .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           pytest
 
   send_message:
