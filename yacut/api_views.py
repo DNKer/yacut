@@ -40,7 +40,7 @@ def api_create_short_id() -> Any:
         data['custom_id'] = get_unique_short_id()
     if URLMap.query.filter_by(short=data['custom_id']).first():
         raise InvalidAPIUsageError(ID_NOT_FREE.format(data['custom_id']))
-    elif not match(PATTERN_SHORT_URL, data['custom_id']):
+    if not match(PATTERN_SHORT_URL, data['custom_id']):
         raise InvalidAPIUsageError(ERROR_SHORT_URL)
     url_map = URLMap()
     url_map.from_dict(data)
