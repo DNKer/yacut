@@ -12,6 +12,8 @@
 
 Проектом предусмотрен API, позволяющий POST-запросом создавать новую короткую ссылку и GET-запросом получать оригинальную ссылку по указанному короткому идентификатору.
 
+![workflow](https://github.com/DNKer/yacut/actions/workflows/yacut.yml/badge.svg?branch=master&event=push)
+
 <img src="yacut\static\img\1649172105.png" alt="drawing"/>
 
 ## Технологии
