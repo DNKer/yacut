@@ -12,7 +12,7 @@
 
 Проектом предусмотрен API, позволяющий POST-запросом создавать новую короткую ссылку и GET-запросомполучать оригинальную ссылку по указанному короткому идентификатору.
 
-![logo](yacut\static\img\1649172105.png)
+<img src="yacut\static\img\1649172105.png" alt="drawing"/>
 
 ## Технологии
 [![Python](https://img.shields.io/badge/-Python-464646?style=plastic&logo=Python&logoColor=56C0C0&color=008080)](https://www.python.org/)
