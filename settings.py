@@ -22,6 +22,6 @@ class Config(object):
     SECRET_KEY: str = os.getenv(
         'SECRET_KEY',
         default='secret_code_must_be_here')
-    DEBUG: bool = os.getenv(
-        'DEBUG', default=False
+    FLASK_ENV: bool = os.getenv(
+        'FLASK_ENV', default=False
     )
