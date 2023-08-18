@@ -4,7 +4,8 @@ from flask import (
     flash,
     redirect,
     render_template,
-    request)
+    request
+)
 
 from . import app, db
 from .forms import URLForm
@@ -14,6 +15,7 @@ from .utils import get_unique_short_id
 
 @app.route('/', methods=['GET', 'POST'])
 def index_view() -> str:
+    """Создать оригинальную ссылку-идентификатор."""
     form = URLForm()
     if form.validate_on_submit():
         custom_id = form.custom_id.data
@@ -36,5 +38,6 @@ def index_view() -> str:
 
 @app.route('/<string:short_id>', methods=['GET'])
 def yacut_view_redirect(short_id) -> Any:
+    """Получить оригинальную ссылку по идентификатору."""
     return redirect(
         URLMap.query.filter_by(short=short_id).first_or_404().original)

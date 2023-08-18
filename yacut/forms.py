@@ -26,6 +26,7 @@ class URLForm(FlaskForm):
     custom_link - необязательное для пользовательского варианта короткой ссылки (models.short);
     submit - внести запись ("кнопка").
     """
+
     original_link = URLField(
         DESCRIPTION_ORIG_URL,
         validators=[DataRequired(message=MISSING_DATA),

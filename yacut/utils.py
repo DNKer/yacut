@@ -6,7 +6,7 @@ from .models import URLMap
 
 
 def get_unique_short_id() -> str:
-    """ Генерация ссылки. """
+    """Генерация ссылки."""
     while True:
         short_id = ''.join(choices(ascii_letters + digits, k=QUANTITY_CHAR))
         if not URLMap.query.filter_by(short=short_id).first():

@@ -14,13 +14,14 @@ class URLMap(db.Model):
     short - поле для короткого идентификатора
     timestamp - поле для временной метки; по этому столбцу БД будет проиндексирована
     """
+
     id = db.Column(db.Integer, primary_key=True)
     original = db.Column(db.String(256), nullable=False)
     short = db.Column(db.String(64), unique=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def to_dict(self) -> Dict[str, str]:
-        """ Серриализатор модели "Ссылка". """
+        """Серриализатор модели "Ссылка"."""
         return dict(
             url=self.original,
             short_link=url_for('yacut_view_redirect',
@@ -28,7 +29,7 @@ class URLMap(db.Model):
                                _external=True))
 
     def from_dict(self, data) -> Any:
-        """ Десерриализатор модели "Ссылка". """
+        """Десерриализатор модели "Ссылка"."""
         columns_dict = {'original': 'url', 'short': 'custom_id'}
         for field in columns_dict.items():
             if field[1] in data:

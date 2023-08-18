@@ -12,6 +12,7 @@ class InvalidAPIUsageError(Exception):
     сообщения и статус-код ошибки (необязательно). Если статус-код
     для ответа API не указан — вернется код 400.
     """
+
     status_code = Status.BAD_REQUEST
 
     def __init__(self, message, status_code=None) -> None:
@@ -21,24 +22,24 @@ class InvalidAPIUsageError(Exception):
             self.status_code = status_code
 
     def to_dict(self) -> Dict[Any, Any]:
-        """ Метод для сериализации переданного сообщения об ошибке. """
+        """Метод для сериализации переданного сообщения об ошибке."""
         return dict(message=self.message)
 
 
 @app.errorhandler(InvalidAPIUsageError)
 def invalid_api_usage(error) -> Any:
-    """ Обработчик кастомного исключения для API. """
+    """Обработчик кастомного исключения для API."""
     return jsonify(error.to_dict()), error.status_code
 
 
 @app.errorhandler(404)
 def page_not_found(error) -> str:
-    """ Обработка ошибки "Не найдено". """
+    """Обработка ошибки "Не найдено"."""
     return render_template('404.html'), Status.NOT_FOUND
 
 
 @app.errorhandler(500)
 def internal_error(error) -> str:
-    """ Обработка ошибки "Ошибка сервера". """
+    """Обработка ошибки "Ошибка сервера"."""
     db.session.rollback()
     return render_template('500.html'), Status.INTERNAL_SERVER_ERROR
