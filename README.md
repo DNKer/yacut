@@ -140,7 +140,6 @@ http://127.0.0.1:5000/api/id/18EXVC
 ```
 
 
-
 #### Лицензия
 ###### Free Software, as Is 
 ###### _License Free_
